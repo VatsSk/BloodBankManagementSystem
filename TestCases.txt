@@ -1,0 +1,206 @@
+---
+
+**Blood Bank System - Testing Report**
+
+---
+
+### SIGNUP PAGE TESTING
+✅ All tests passed
+
+**First Name & Last Name**
+- Must not be empty
+- Must contain only alphabets
+
+**Date of Birth (DOB)**
+- Must not be empty
+- Must be in the past
+- Format: YYYY-MM-DD
+
+**Blood Group**
+- Must not be empty
+- Valid Groups: A+, A-, B+, B-, O+, O-, AB+, AB-
+
+**Username**
+- Must not be empty
+- Length: 5-20 characters
+- Must contain at least one letter or digit
+- No spaces allowed (Case Sensitive)
+
+**Password**
+- Must not be empty
+- At least 8 characters long
+- Must include:
+  - One uppercase letter
+  - One lowercase letter
+  - One digit
+  - One special character (@$!%*?&)
+- Validated before hitting the database
+
+**Email**
+- Must not be empty
+- Must be in a valid email format
+
+**Security Answers**
+- Must not be empty
+- Only special characters or spaces are not allowed
+
+---
+
+### LOGIN PAGE TESTING
+✅ All tests passed
+
+**Username**
+- Must not be empty
+- Length: 5-20 characters
+- Must contain at least one letter or digit
+- No spaces allowed (Case Sensitive)
+- If username does not exist → "User not found" message
+
+**Password**
+- Must not be empty
+- At least 8 characters long
+- Must include:
+  - One uppercase letter
+  - One lowercase letter
+  - One digit
+  - One special character (@$!%*?&)
+- If incorrect password:
+  - "Invalid Password" message
+  - Shows remaining attempts
+  - After 3 failed attempts, account locks until password reset
+
+**Additional Notes:**
+- Logged-in users are redirected to their respective dashboards
+- Unauthorized access to pages is restricted
+- POST requests accessed via URL redirect to corresponding GET pages
+
+---
+
+### FORGOT PASSWORD PAGE TESTING
+✅ All tests passed
+
+**Username**
+- Must not be empty
+- Length: 5-20 characters
+- Must contain at least one letter or digit
+- If username does not exist → "User Doesn't Exist" message
+
+**Security Answers**
+- Must not be empty
+- Only special characters or spaces are not allowed
+- Matched with original answers provided at sign-up
+
+**New Password**
+- Must not be empty
+- At least 8 characters long
+- Must include:
+  - One uppercase letter
+  - One lowercase letter
+  - One digit
+  - One special character (@$!%*?&)
+
+**Additional Notes:**
+- If two reset requests are submitted simultaneously, only the latest request updates the password
+
+---
+
+### USER & ADMIN DASHBOARD TESTING
+✅ All features are working
+
+- **User Dashboard** → Displays user details & history
+- **Admin Dashboard** → Displays key statistics
+
+---
+
+### BLOOD DONATION/REQUEST TESTING
+✅ All tests passed (except one issue noted)
+
+**Request Type**
+- User can choose only "Donor" or "Receiver"
+
+**Blood Group**
+- Must be one of the 8 valid blood groups
+
+**Quantity**
+- Must be between 0.5 to 3 units
+
+**Additional Notes:**
+- A user can have only one active donation request at a time
+- If a donation request is accepted → User cannot donate again for 90 days
+- If a user tries to donate within this period → "Can't donate now. Try after XYZ days."
+
+---
+
+### USER REQUEST HISTORY TESTING
+✅ All records displayed properly
+
+---
+
+### ADMIN DASHBOARD TESTING
+✅ All required statistics are displayed
+
+- Total Active Users
+- Available Blood Units
+- Total Units Donated
+- Total Units Received
+
+---
+
+### ADMIN - ALL USERS PAGE TESTING
+✅ All tests passed
+
+**User Records**
+- Displayed correctly
+
+**Sorting Functionality**
+- Sort by Name
+- Sort by Username
+- Sort by DOB
+- Sort by Created Date
+
+**Filtering Functionality**
+- Filter by Active Users
+- Filter by Locked Users
+- Filter by All Users
+
+---
+
+### ADMIN - REQUESTS PAGE TESTING
+✅ All tests passed (except one issue noted)
+
+**Requests Display**
+- Displayed with Approve/Reject buttons
+- Clicking updates request status
+
+**Filtering Functionality**
+- Filter by Pending Requests
+- Filter by Request Date
+- Filter by Blood Group
+
+**Issue Noted:**
+- Blood stock is not automatically validated when approving requests
+- Admin must manually check availability before approval
+
+---
+
+### ADMIN - BLOOD STOCK TESTING
+✅ All tests passed
+
+- Displays available blood units for each group
+- Shows last update time
+
+---
+
+### ADMIN - REPORTS PAGE TESTING
+✅ All tests passed
+
+**Requests Categorized by Status & Blood Group**
+- Displays approved, rejected, and pending requests
+
+---
+
+### Final Summary
+✅ Most features working as expected
+❌ A few minor issues noted (like blood stock validation in admin requests)
+
+---
